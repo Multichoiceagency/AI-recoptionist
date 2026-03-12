@@ -4,7 +4,7 @@
 
 # Use the official Python base image with Python 3.13
 # We use the slim variant to keep the image size smaller while still having essential tools
-ARG PYTHON_VERSION=3.13
+ARG PYTHON_VERSION=3.11
 FROM python:${PYTHON_VERSION}-slim AS base
 
 # Keeps Python from buffering stdout and stderr to avoid situations where
@@ -41,11 +41,11 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /app
 
 # Copy just the dependency files first, for more efficient layer caching
-COPY requirements.txt ./
+COPY pyproject.toml ./
+COPY receptionist/__init__.py receptionist/
 
 # Install Python dependencies using pip
-# --no-cache-dir ensures we don't use the system cache
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -e .
 
 # Copy all remaining pplication files into the container
 # This includes source code, configuration files, and dependency specifications
