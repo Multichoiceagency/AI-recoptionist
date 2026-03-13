@@ -3,6 +3,7 @@ from __future__ import annotations
 import asyncio
 import json
 import logging
+import os
 import re
 from datetime import datetime
 from pathlib import Path
@@ -37,6 +38,12 @@ def load_business_config(ctx: agents.JobContext) -> BusinessConfig:
             logger.warning("Failed to parse job metadata as JSON")
 
     config_name = metadata.get("config", None)
+
+    if not config_name:
+        # Check DEFAULT_CONFIG environment variable before falling back to first file
+        env_default = os.environ.get("DEFAULT_CONFIG", "").strip()
+        if env_default:
+            config_name = env_default
 
     if config_name:
         if not re.match(r'^[a-zA-Z0-9_-]+$', config_name):
