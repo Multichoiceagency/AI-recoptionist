@@ -87,13 +87,16 @@ after_hours_message: |
 routing:
   - name: "Sales"
     number: "+31648477829"
-    description: "Voor offertes, nieuwe projecten en salesvragen"
+    description: "Mark — offertes, nieuwe projecten, salesgesprekken en strategie"
   - name: "Support"
     number: "+31648477829"
-    description: "Technische ondersteuning en website beheer"
+    description: "Tom — technische ondersteuning, storingen en website beheer"
+  - name: "Planning"
+    number: "+31648477829"
+    description: "Sophie — afspraken inplannen, agenda-beheer en kennismakingsgesprekken"
   - name: "Directie"
     number: "+31648477829"
-    description: "Voor partnerships en strategische samenwerking"
+    description: "Directe lijn — voor partnerships, enterprise deals en strategische samenwerking"
 
 faqs:
   - question: "Wat doet Multichoice Agency?"
