@@ -18,4 +18,4 @@ RUN pip install --no-cache-dir -e .
 
 COPY . .
 
-CMD ["python", "receptionist/agent.py", "start", "--num-idle-processes", "1"]
+CMD ["python", "receptionist/agent.py", "start"]
