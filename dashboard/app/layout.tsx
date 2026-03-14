@@ -1,18 +1,13 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { GeistSans } from 'geist/font/sans'
+import { GeistMono } from 'geist/font/mono'
 import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { GoogleTranslate } from '@/components/google-translate'
 
-const inter = Inter({ 
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-})
-
 export const metadata: Metadata = {
-  title: 'AI Receptionist | Premium AI Voice Assistant',
-  description: 'Transform your business communication with our premium AI voice assistant. Natural conversations, 24/7 availability, infinite scalability.',
+  title: 'AI Receptionist | Premium AI Voice Concierge',
+  description: 'Experience the future of hospitality. Our AI voice concierge delivers exceptional service with the warmth of human conversation, available 24 hours a day.',
   icons: { icon: '/favicon.svg' },
 }
 
@@ -22,8 +17,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`dark ${inter.variable}`} suppressHydrationWarning>
-      <body className={`min-h-screen transition-colors ${inter.className}`}>
+    <html lang="en" className={`dark ${GeistSans.variable} ${GeistMono.variable}`} suppressHydrationWarning>
+      <body className={`min-h-screen transition-colors ${GeistSans.className}`}>
         <ThemeProvider>
           {children}
           <GoogleTranslate />

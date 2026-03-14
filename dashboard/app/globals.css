@@ -4,33 +4,31 @@
 
 @layer base {
   :root {
-    /* Voisly Premium Color Palette */
-    --color-primary: #8B5CF6;
-    --color-primary-light: #A78BFA;
-    --color-primary-dark: #7C3AED;
+    /* Luxury Color Palette */
+    --color-gold: #D4AF37;
+    --color-gold-light: #E5C158;
+    --color-gold-dark: #B8942D;
     
-    --color-secondary: #D946EF;
-    --color-secondary-light: #E879F9;
-    --color-secondary-dark: #C026D3;
+    --color-champagne: #F7E7CE;
+    --color-ivory: #FFFFF0;
     
-    --color-accent: #06B6D4;
-    --color-accent-light: #22D3EE;
-    --color-accent-dark: #0891B2;
+    --color-charcoal: #0c0c0c;
+    --color-charcoal-light: #1a1a1a;
+    --color-charcoal-dark: #050505;
     
-    --color-success: #10B981;
-    --color-warning: #F59E0B;
-    --color-error: #EF4444;
-    
-    --background-primary: #0A0118;
-    --background-secondary: #120428;
-    --background-card: rgba(255, 255, 255, 0.05);
+    --background-primary: #0c0c0c;
+    --background-secondary: #111111;
     
     --foreground: #ffffff;
-    --foreground-muted: #9CA3AF;
-    --foreground-subtle: #6B7280;
+    --foreground-muted: #999999;
+    --foreground-subtle: #666666;
     
-    --border-color: rgba(255, 255, 255, 0.1);
-    --border-hover: rgba(255, 255, 255, 0.2);
+    --border-color: rgba(255, 255, 255, 0.05);
+    --border-hover: rgba(255, 255, 255, 0.1);
+    
+    /* Font Variables */
+    --font-geist-sans: 'Geist Sans', system-ui, sans-serif;
+    --font-geist-mono: 'Geist Mono', monospace;
   }
 
   * {
@@ -40,6 +38,7 @@
   html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
   }
 
   /* Dark mode (default) */
@@ -54,8 +53,8 @@
 
   /* Light mode */
   html.light body {
-    background-color: #f9fafb;
-    color: #111827;
+    background-color: #fafafa;
+    color: #0c0c0c;
   }
 
   html.light {
@@ -63,33 +62,194 @@
   }
 
   body {
-    font-family: var(--font-inter), system-ui, sans-serif;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: var(--font-geist-sans);
+    transition: background-color 0.5s ease, color 0.5s ease;
+    letter-spacing: 0.01em;
+  }
+
+  /* Custom selection */
+  ::selection {
+    background-color: rgba(212, 175, 55, 0.3);
+    color: #fff;
+  }
+
+  /* Luxury Scrollbar */
+  html.dark ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  html.dark ::-webkit-scrollbar-track {
+    background: #0c0c0c;
+  }
+
+  html.dark ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #333, #222);
+    border-radius: 4px;
+    border: 1px solid #1a1a1a;
+  }
+
+  html.dark ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #444, #333);
+  }
+
+  /* Light scrollbar */
+  html.light ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  html.light ::-webkit-scrollbar-track {
+    background: #f5f5f5;
+  }
+
+  html.light ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #ccc, #bbb);
+    border-radius: 4px;
+  }
+
+  html.light ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #bbb, #aaa);
+  }
+}
+
+@layer components {
+  /* Radial Gradient Background */
+  .bg-gradient-radial {
+    background: radial-gradient(ellipse at center, var(--tw-gradient-stops));
+  }
+
+  /* Light mode component overrides */
+  html.light .bg-gray-900 {
+    background-color: #ffffff;
+  }
+
+  html.light .bg-gray-950 {
+    background-color: #fafafa;
+  }
+
+  html.light .bg-gray-800 {
+    background-color: #f5f5f5;
+  }
+
+  html.light .border-gray-800 {
+    border-color: #e5e5e5;
+  }
+
+  html.light .border-gray-700 {
+    border-color: #d5d5d5;
+  }
+
+  html.light .text-white {
+    color: #0c0c0c;
+  }
+
+  html.light .text-gray-400 {
+    color: #666666;
+  }
+
+  html.light .text-gray-500 {
+    color: #888888;
+  }
+
+  html.light .text-gray-300 {
+    color: #444444;
+  }
+
+  html.light .hover\:bg-gray-800:hover {
+    background-color: #f0f0f0;
+  }
+
+  html.light .hover\:text-white:hover {
+    color: #0c0c0c;
+  }
+
+  html.light .bg-gray-900\/50 {
+    background-color: rgba(250, 250, 250, 0.5);
+  }
+
+  html.light .divide-gray-800 > :not([hidden]) ~ :not([hidden]) {
+    border-color: #e5e5e5;
+  }
+
+  /* Light mode for amber/gold colors */
+  html.light .text-amber-400 {
+    color: #b8942d;
+  }
+
+  html.light .text-amber-200 {
+    color: #8b7355;
+  }
+
+  html.light .from-amber-500 {
+    --tw-gradient-from: #c9a227;
+  }
+
+  html.light .to-amber-600 {
+    --tw-gradient-to: #b8942d;
+  }
+
+  /* Badge adjustments */
+  html.light .bg-amber-500\/10 {
+    background-color: rgba(212, 175, 55, 0.1);
+  }
+
+  html.light .bg-amber-500\/20 {
+    background-color: rgba(212, 175, 55, 0.15);
+  }
+
+  html.light .border-amber-500\/20 {
+    border-color: rgba(212, 175, 55, 0.25);
+  }
+
+  html.light .border-amber-500\/30 {
+    border-color: rgba(212, 175, 55, 0.35);
+  }
+
+  /* Shadow adjustments */
+  html.light .shadow-lg {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  }
+
+  html.light .shadow-amber-500\/20 {
+    --tw-shadow-color: rgba(212, 175, 55, 0.15);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
   
-  /* Voice Wave Animation */
-  @keyframes wave {
-    0%, 100% {
-      transform: scaleY(0.3);
+  /* Luxury text gradient */
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #d4af37, #e5c158, #d4af37);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Fade in animation */
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
     }
-    50% {
-      transform: scaleY(1);
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
   
-  /* Pulse Glow Animation */
-  @keyframes pulse-glow {
-    0%, 100% {
-      opacity: 0.3;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 0.6;
-      transform: scale(1.05);
-    }
+  /* Subtle float animation */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
   }
   
-  /* Float Animation */
   @keyframes float {
     0%, 100% {
       transform: translateY(0);
@@ -99,151 +259,17 @@
     }
   }
   
-  /* Gradient Shift Animation */
-  @keyframes gradient-shift {
-    0% {
-      background-position: 0% 50%;
+  /* Pulse glow for premium elements */
+  .animate-pulse-glow {
+    animation: pulseGlow 3s ease-in-out infinite;
+  }
+  
+  @keyframes pulseGlow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
     }
     50% {
-      background-position: 100% 50%;
+      box-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
     }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-  
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
-  }
-  
-  .animate-gradient {
-    background-size: 200% 200%;
-    animation: gradient-shift 3s ease infinite;
-  }
-
-  /* Dark scrollbar */
-  html.dark ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-
-  html.dark ::-webkit-scrollbar-track {
-    background: #111827;
-  }
-
-  html.dark ::-webkit-scrollbar-thumb {
-    background: #374151;
-    border-radius: 3px;
-  }
-
-  html.dark ::-webkit-scrollbar-thumb:hover {
-    background: #4b5563;
-  }
-
-  /* Light scrollbar */
-  html.light ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-
-  html.light ::-webkit-scrollbar-track {
-    background: #f3f4f6;
-  }
-
-  html.light ::-webkit-scrollbar-thumb {
-    background: #d1d5db;
-    border-radius: 3px;
-  }
-
-  html.light ::-webkit-scrollbar-thumb:hover {
-    background: #9ca3af;
-  }
-}
-
-@layer components {
-  /* Light mode component overrides */
-  html.light .bg-gray-900 {
-    background-color: #ffffff;
-  }
-
-  html.light .bg-gray-950 {
-    background-color: #f9fafb;
-  }
-
-  html.light .bg-gray-800 {
-    background-color: #f3f4f6;
-  }
-
-  html.light .border-gray-800 {
-    border-color: #e5e7eb;
-  }
-
-  html.light .border-gray-700 {
-    border-color: #d1d5db;
-  }
-
-  html.light .text-white {
-    color: #111827;
-  }
-
-  html.light .text-gray-400 {
-    color: #6b7280;
-  }
-
-  html.light .text-gray-500 {
-    color: #9ca3af;
-  }
-
-  html.light .text-gray-300 {
-    color: #4b5563;
-  }
-
-  html.light .hover\:bg-gray-800:hover {
-    background-color: #f3f4f6;
-  }
-
-  html.light .hover\:text-white:hover {
-    color: #111827;
-  }
-
-  html.light .bg-gray-900\/50 {
-    background-color: rgba(249, 250, 251, 0.5);
-  }
-
-  html.light .divide-gray-800 > :not([hidden]) ~ :not([hidden]) {
-    border-color: #e5e7eb;
-  }
-
-  /* Card styles for light mode */
-  html.light .bg-gradient-to-br.from-gray-900.to-gray-800 {
-    background: linear-gradient(to bottom right, #ffffff, #f9fafb);
-  }
-
-  /* Badge adjustments */
-  html.light .bg-blue-500\/10 {
-    background-color: rgba(59, 130, 246, 0.1);
-  }
-
-  html.light .bg-green-500\/10 {
-    background-color: rgba(34, 197, 94, 0.1);
-  }
-
-  html.light .bg-red-500\/10 {
-    background-color: rgba(239, 68, 68, 0.1);
-  }
-
-  html.light .bg-yellow-500\/10 {
-    background-color: rgba(234, 179, 8, 0.1);
-  }
-
-  /* Shadow adjustments */
-  html.light .shadow-lg {
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  }
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
   }
 }

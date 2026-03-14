@@ -19,6 +19,7 @@
     "clsx": "^2.1.1",
     "date-fns": "^3.6.0",
     "framer-motion": "^12.36.0",
+    "geist": "^1.7.0",
     "js-yaml": "^4.1.0",
     "livekit-server-sdk": "^2.15.0",
     "lucide-react": "^0.400.0",

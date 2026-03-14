@@ -12,7 +12,7 @@ export function LandingNav() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
+      setIsScrolled(window.scrollY > 50)
     }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
@@ -20,65 +20,65 @@ export function LandingNav() {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
         isScrolled 
-          ? 'bg-[#0A0118]/90 backdrop-blur-xl border-b border-white/10 shadow-lg shadow-black/20' 
+          ? 'bg-[#0c0c0c]/90 backdrop-blur-xl border-b border-white/5' 
           : 'bg-transparent'
       }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3 group">
-              <div className="p-2.5 rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-500 shadow-lg shadow-violet-500/25 group-hover:shadow-violet-500/40 transition-all duration-300">
-                <Phone className="h-5 w-5 text-white" />
+              <div className="p-2 rounded-full bg-gradient-to-br from-amber-500/20 to-amber-600/20 border border-amber-500/20 group-hover:border-amber-500/30 transition-colors">
+                <Phone className="h-4 w-4 text-amber-400" />
               </div>
-              <span className="font-bold text-white text-lg">AI Receptionist</span>
+              <span className="font-light tracking-wide text-white/80">AI Receptionist</span>
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
-              <a href="#features" className="text-sm text-gray-400 hover:text-white transition-colors relative group">
+            <div className="hidden md:flex items-center gap-10">
+              <a href="#voice-demos" className="text-sm text-white/50 hover:text-white/90 transition-colors font-light tracking-wide">
+                Demos
+              </a>
+              <a href="#features" className="text-sm text-white/50 hover:text-white/90 transition-colors font-light tracking-wide">
                 Features
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-violet-500 to-fuchsia-500 group-hover:w-full transition-all duration-300" />
               </a>
-              <a href="#pricing" className="text-sm text-gray-400 hover:text-white transition-colors relative group">
-                Pricing
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-violet-500 to-fuchsia-500 group-hover:w-full transition-all duration-300" />
+              <a href="#pricing" className="text-sm text-white/50 hover:text-white/90 transition-colors font-light tracking-wide">
+                Investment
               </a>
-              <a href="#testimonials" className="text-sm text-gray-400 hover:text-white transition-colors relative group">
+              <a href="#testimonials" className="text-sm text-white/50 hover:text-white/90 transition-colors font-light tracking-wide">
                 Reviews
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-violet-500 to-fuchsia-500 group-hover:w-full transition-all duration-300" />
               </a>
             </div>
 
             {/* Right Section */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               <div className="hidden sm:flex items-center gap-2">
                 <ThemeToggle compact />
                 <LanguageSelector compact />
               </div>
               
-              <div className="hidden md:flex items-center gap-3">
+              <div className="hidden md:flex items-center gap-4">
                 <Link
                   href="/login"
-                  className="text-sm text-gray-300 hover:text-white transition-colors px-4 py-2"
+                  className="text-sm text-white/50 hover:text-white/90 transition-colors font-light tracking-wide px-4 py-2"
                 >
                   Sign In
                 </Link>
                 <Link
                   href="/signup"
-                  className="text-sm bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white px-5 py-2.5 rounded-xl font-medium transition-all duration-300 shadow-lg shadow-violet-500/25 hover:shadow-violet-500/40"
+                  className="text-sm bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black px-6 py-2.5 rounded-full font-medium transition-all duration-300"
                 >
-                  Start Free Trial
+                  Get Started
                 </Link>
               </div>
 
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="md:hidden p-2 text-gray-400 hover:text-white transition-colors"
+                className="md:hidden p-2 text-white/50 hover:text-white transition-colors"
               >
-                {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </button>
             </div>
           </div>
@@ -86,25 +86,32 @@ export function LandingNav() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-[#0A0118]/95 backdrop-blur-xl border-t border-white/10">
-            <div className="px-4 py-6 space-y-4">
+          <div className="md:hidden bg-[#0c0c0c]/95 backdrop-blur-xl border-t border-white/5">
+            <div className="px-4 py-8 space-y-6">
+              <a 
+                href="#voice-demos" 
+                className="block text-white/60 hover:text-white transition-colors py-2 font-light tracking-wide"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Demos
+              </a>
               <a 
                 href="#features" 
-                className="block text-gray-300 hover:text-white transition-colors py-2"
+                className="block text-white/60 hover:text-white transition-colors py-2 font-light tracking-wide"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Features
               </a>
               <a 
                 href="#pricing" 
-                className="block text-gray-300 hover:text-white transition-colors py-2"
+                className="block text-white/60 hover:text-white transition-colors py-2 font-light tracking-wide"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Pricing
+                Investment
               </a>
               <a 
                 href="#testimonials" 
-                className="block text-gray-300 hover:text-white transition-colors py-2"
+                className="block text-white/60 hover:text-white transition-colors py-2 font-light tracking-wide"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Reviews
@@ -115,20 +122,20 @@ export function LandingNav() {
                 <LanguageSelector compact />
               </div>
               
-              <div className="pt-4 space-y-3 border-t border-white/10">
+              <div className="pt-6 space-y-4 border-t border-white/5">
                 <Link
                   href="/login"
-                  className="block text-center text-gray-300 hover:text-white transition-colors py-3"
+                  className="block text-center text-white/60 hover:text-white transition-colors py-3 font-light"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Sign In
                 </Link>
                 <Link
                   href="/signup"
-                  className="block text-center bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white py-3 rounded-xl font-medium"
+                  className="block text-center bg-gradient-to-r from-amber-500 to-amber-600 text-black py-3 rounded-full font-medium"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Start Free Trial
+                  Get Started
                 </Link>
               </div>
             </div>

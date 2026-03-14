@@ -1,286 +1,351 @@
 'use client'
 
+import { useState, useRef } from 'react'
 import Link from 'next/link'
-import { Phone, Zap, Clock, Globe, Shield, TrendingUp, Check, ArrowRight, Play, Star, Users, HeadphonesIcon, Mic, Sparkles, Bot, MessageSquare, BarChart3, Headphones, Volume2, Settings, ChevronRight } from 'lucide-react'
+import { Phone, Clock, Globe, Shield, Check, ArrowRight, Play, Pause, Star, Users, Volume2, Sparkles, ChevronRight, Award, Building2, Headphones, MessageCircle, CalendarCheck, PhoneCall, MicVocal, Waves } from 'lucide-react'
 import { LandingNav } from '@/components/landing-nav'
-import { motion } from 'framer-motion'
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-[#0A0118] text-white overflow-hidden">
-      {/* Animated Background */}
+    <div className="min-h-screen bg-[#0c0c0c] text-white overflow-hidden">
+      {/* Ambient Background */}
       <div className="fixed inset-0 z-0">
-        {/* Gradient Orbs */}
-        <div className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-gradient-to-br from-violet-600/30 via-purple-600/20 to-transparent rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-gradient-to-tr from-cyan-500/20 via-blue-600/15 to-transparent rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-gradient-to-r from-fuchsia-600/10 via-violet-600/10 to-cyan-600/10 rounded-full blur-[150px]" />
-        
-        {/* Grid Pattern */}
-        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-[0.02]" />
-        
-        {/* Noise Texture */}
-        <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] mix-blend-overlay" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0c0c0c] via-[#0f0f0f] to-[#0c0c0c]" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[800px] bg-gradient-radial from-amber-900/10 via-transparent to-transparent opacity-50" />
+        <div className="absolute bottom-0 left-0 w-full h-[500px] bg-gradient-to-t from-amber-950/5 to-transparent" />
+        <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.015] mix-blend-overlay" />
       </div>
 
-      {/* Navigation */}
       <LandingNav />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 z-10">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
-            {/* Left Content */}
-            <div className="flex-1 text-center lg:text-left">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-500/10 to-cyan-500/10 border border-violet-500/20 rounded-full px-4 py-2 mb-8 backdrop-blur-sm">
-                <Sparkles className="h-4 w-4 text-violet-400" />
-                <span className="text-sm text-violet-300">AI-Powered Voice Technology</span>
-                <div className="h-2 w-2 bg-green-400 rounded-full animate-pulse" />
+      <section className="relative pt-40 pb-32 px-4 sm:px-6 lg:px-8 z-10">
+        <div className="max-w-6xl mx-auto text-center">
+          {/* Luxury Badge */}
+          <div className="inline-flex items-center gap-3 mb-12">
+            <div className="h-px w-12 bg-gradient-to-r from-transparent to-amber-500/50" />
+            <span className="text-xs uppercase tracking-[0.3em] text-amber-400/80 font-light">Premium Voice Technology</span>
+            <div className="h-px w-12 bg-gradient-to-l from-transparent to-amber-500/50" />
+          </div>
+          
+          {/* Main Heading */}
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-extralight leading-[1.1] mb-8 tracking-tight">
+            <span className="text-white/90">Your Voice</span>
+            <br />
+            <span className="bg-gradient-to-r from-amber-200 via-amber-100 to-amber-300 bg-clip-text text-transparent font-light italic">
+              Reimagined
+            </span>
+          </h1>
+          
+          <p className="text-lg sm:text-xl text-white/50 max-w-2xl mx-auto mb-16 font-light leading-relaxed">
+            Experience the art of conversation, perfected. Our AI concierge delivers 
+            exceptional service with the warmth and sophistication your guests expect.
+          </p>
+          
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-20">
+            <Link
+              href="/signup"
+              className="group w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black px-10 py-5 rounded-full font-medium text-base transition-all duration-500 shadow-2xl shadow-amber-500/20 hover:shadow-amber-500/30"
+            >
+              Begin Your Experience
+              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <a
+              href="#voice-demos"
+              className="group w-full sm:w-auto inline-flex items-center justify-center gap-3 text-white/70 hover:text-white px-10 py-5 font-light text-base transition-all duration-300"
+            >
+              <div className="relative">
+                <div className="absolute inset-0 bg-amber-500/20 rounded-full animate-ping" />
+                <Play className="h-4 w-4 relative z-10 fill-current" />
               </div>
-              
-              {/* Main Heading */}
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.1] mb-8 tracking-tight">
-                <span className="text-white">Your Voice.</span>
-                <br />
-                <span className="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-cyan-400 bg-clip-text text-transparent">
-                  Amplified by AI.
-                </span>
-              </h1>
-              
-              <p className="text-xl text-gray-400 max-w-xl mb-10 leading-relaxed">
-                Transform your business communication with our premium AI voice assistant. 
-                Natural conversations, 24/7 availability, infinite scalability.
-              </p>
-              
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row items-center gap-4 mb-12">
-                <Link
-                  href="/signup"
-                  className="group w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 shadow-2xl shadow-violet-500/25 hover:shadow-violet-500/40 hover:scale-[1.02]"
-                >
-                  Start Free Trial
-                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <button className="group w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-white/5 hover:bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 border border-white/10 hover:border-white/20">
-                  <div className="relative">
-                    <div className="absolute inset-0 bg-violet-500 rounded-full animate-ping opacity-25" />
-                    <Play className="h-5 w-5 relative z-10 fill-white" />
-                  </div>
-                  Watch Demo
-                </button>
-              </div>
-              
-              {/* Trust Badges */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6 text-sm text-gray-500">
-                <div className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-emerald-400" />
-                  <span>No credit card required</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-emerald-400" />
-                  <span>14-day free trial</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-emerald-400" />
-                  <span>Setup in 5 minutes</span>
-                </div>
-              </div>
-            </div>
-            
-            {/* Right Visual - Voice Assistant Visualization */}
-            <div className="flex-1 relative">
-              <VoiceVisualization />
-            </div>
+              Listen to Demos
+            </a>
+          </div>
+          
+          {/* Trust Indicators */}
+          <div className="flex flex-wrap items-center justify-center gap-12 text-xs uppercase tracking-widest text-white/30">
+            <span>Trusted by Leading Hotels</span>
+            <span className="hidden sm:block">•</span>
+            <span>Enterprise Ready</span>
+            <span className="hidden sm:block">•</span>
+            <span>24/7 Availability</span>
           </div>
         </div>
       </section>
 
-      {/* Logos Section */}
-      <section className="relative py-16 px-4 sm:px-6 lg:px-8 z-10 border-y border-white/5">
-        <div className="max-w-7xl mx-auto">
-          <p className="text-center text-sm text-gray-500 mb-8 uppercase tracking-wider">Trusted by industry leaders</p>
-          <div className="flex flex-wrap items-center justify-center gap-12 opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
-            {['OpenAI', 'LiveKit', 'Twilio', 'Google Cloud', 'AWS', 'Microsoft'].map((logo) => (
-              <div key={logo} className="text-xl font-bold text-gray-400 hover:text-white transition-colors">
-                {logo}
-              </div>
-            ))}
-          </div>
+      {/* Marquee Logos */}
+      <section className="relative py-16 z-10 border-y border-white/5">
+        <div className="flex items-center justify-center gap-20 opacity-30 text-sm tracking-widest font-light">
+          {['THE RITZ', 'FOUR SEASONS', 'MANDARIN ORIENTAL', 'ST. REGIS', 'WALDORF ASTORIA', 'PENINSULA'].map((name) => (
+            <span key={name} className="whitespace-nowrap">{name}</span>
+          ))}
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="relative py-24 px-4 sm:px-6 lg:px-8 z-10">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <StatCard value="10M+" label="Calls Handled" icon={Phone} color="violet" />
-            <StatCard value="99.99%" label="Uptime SLA" icon={Shield} color="emerald" />
-            <StatCard value="<500ms" label="Response Time" icon={Zap} color="cyan" />
-            <StatCard value="150+" label="Languages" icon={Globe} color="fuchsia" />
+      {/* Voice Demos Section */}
+      <section id="voice-demos" className="relative py-32 px-4 sm:px-6 lg:px-8 z-10">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center gap-3 mb-8">
+              <div className="h-px w-8 bg-gradient-to-r from-transparent to-amber-500/50" />
+              <span className="text-xs uppercase tracking-[0.3em] text-amber-400/80 font-light">Voice Demonstrations</span>
+              <div className="h-px w-8 bg-gradient-to-l from-transparent to-amber-500/50" />
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-extralight mb-6">
+              <span className="text-white/90">Hear the</span>{' '}
+              <span className="italic text-amber-200">Difference</span>
+            </h2>
+            <p className="text-white/50 font-light max-w-xl mx-auto">
+              Experience the natural warmth and sophistication of our AI voices
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <VoiceDemoCard
+              title="Hotel Concierge"
+              subtitle="Warm & Professional"
+              description="Perfect for luxury hospitality, greeting guests and handling reservations."
+              voiceType="Sophia"
+              accent="American"
+              audioSrc="/demos/concierge.mp3"
+              gradient="from-amber-500/10 to-orange-500/10"
+            />
+            <VoiceDemoCard
+              title="Business Assistant"
+              subtitle="Clear & Efficient"
+              description="Ideal for corporate environments, scheduling and information delivery."
+              voiceType="James"
+              accent="British"
+              audioSrc="/demos/business.mp3"
+              gradient="from-blue-500/10 to-indigo-500/10"
+            />
+            <VoiceDemoCard
+              title="Medical Reception"
+              subtitle="Calm & Reassuring"
+              description="Designed for healthcare, with empathetic and clear communication."
+              voiceType="Emma"
+              accent="Neutral"
+              audioSrc="/demos/medical.mp3"
+              gradient="from-emerald-500/10 to-teal-500/10"
+            />
+            <VoiceDemoCard
+              title="Restaurant Maître d'"
+              subtitle="Elegant & Refined"
+              description="Crafted for fine dining, handling reservations with sophistication."
+              voiceType="Alexandre"
+              accent="French"
+              audioSrc="/demos/restaurant.mp3"
+              gradient="from-rose-500/10 to-pink-500/10"
+            />
+            <VoiceDemoCard
+              title="Real Estate Agent"
+              subtitle="Confident & Engaging"
+              description="Built for property inquiries, scheduling viewings with enthusiasm."
+              voiceType="Michael"
+              accent="American"
+              audioSrc="/demos/realestate.mp3"
+              gradient="from-violet-500/10 to-purple-500/10"
+            />
+            <VoiceDemoCard
+              title="Multilingual Support"
+              subtitle="Global & Adaptive"
+              description="Seamlessly switches between languages with natural fluency."
+              voiceType="Isabella"
+              accent="Multilingual"
+              audioSrc="/demos/multilingual.mp3"
+              gradient="from-cyan-500/10 to-sky-500/10"
+            />
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section id="features" className="relative py-24 px-4 sm:px-6 lg:px-8 z-10">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-500/10 to-cyan-500/10 border border-violet-500/20 rounded-full px-4 py-2 mb-6 backdrop-blur-sm">
-              <Sparkles className="h-4 w-4 text-violet-400" />
-              <span className="text-sm text-violet-300">Premium Features</span>
+      <section id="features" className="relative py-32 px-4 sm:px-6 lg:px-8 z-10">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            {/* Left - Feature List */}
+            <div>
+              <div className="inline-flex items-center gap-3 mb-8">
+                <div className="h-px w-8 bg-gradient-to-r from-transparent to-amber-500/50" />
+                <span className="text-xs uppercase tracking-[0.3em] text-amber-400/80 font-light">Exceptional Capabilities</span>
+              </div>
+              <h2 className="text-4xl sm:text-5xl font-extralight mb-8 leading-tight">
+                <span className="text-white/90">Crafted for</span>
+                <br />
+                <span className="italic text-amber-200">Excellence</span>
+              </h2>
+              <p className="text-white/50 font-light mb-12 leading-relaxed">
+                Every interaction is designed to reflect the highest standards of service, 
+                combining cutting-edge AI with the timeless art of hospitality.
+              </p>
+              
+              <div className="space-y-6">
+                <FeatureItem
+                  icon={Clock}
+                  title="24/7 Availability"
+                  description="Unwavering presence, any hour of the day or night"
+                />
+                <FeatureItem
+                  icon={Globe}
+                  title="150+ Languages"
+                  description="Fluent conversation in your guests' native tongues"
+                />
+                <FeatureItem
+                  icon={CalendarCheck}
+                  title="Intelligent Scheduling"
+                  description="Seamless appointment and reservation management"
+                />
+                <FeatureItem
+                  icon={Shield}
+                  title="Enterprise Security"
+                  description="Bank-grade encryption and compliance standards"
+                />
+              </div>
             </div>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-              <span className="text-white">Everything You Need</span>
-            </h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              A complete AI voice solution designed for modern businesses
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <FeatureCard
-              icon={Mic}
-              title="Natural Voice AI"
-              description="State-of-the-art speech synthesis and recognition for conversations that feel genuinely human."
-              gradient="from-violet-500 to-fuchsia-500"
-            />
-            <FeatureCard
-              icon={Clock}
-              title="24/7 Availability"
-              description="Never miss a call. Your AI assistant handles inquiries around the clock, every day of the year."
-              gradient="from-cyan-500 to-blue-500"
-            />
-            <FeatureCard
-              icon={Globe}
-              title="150+ Languages"
-              description="Communicate with customers worldwide. Automatic language detection and natural responses."
-              gradient="from-fuchsia-500 to-pink-500"
-            />
-            <FeatureCard
-              icon={Bot}
-              title="Smart Routing"
-              description="Intelligent call routing based on intent, sentiment, and customer history for optimal resolution."
-              gradient="from-emerald-500 to-teal-500"
-            />
-            <FeatureCard
-              icon={BarChart3}
-              title="Real-time Analytics"
-              description="Comprehensive dashboards with call metrics, sentiment analysis, and actionable insights."
-              gradient="from-orange-500 to-amber-500"
-            />
-            <FeatureCard
-              icon={Shield}
-              title="Enterprise Security"
-              description="SOC 2 Type II certified, GDPR compliant, with end-to-end encryption for all communications."
-              gradient="from-blue-500 to-indigo-500"
-            />
+            
+            {/* Right - Visual */}
+            <div className="relative">
+              <div className="aspect-square relative">
+                {/* Ambient Glow */}
+                <div className="absolute inset-0 bg-gradient-radial from-amber-500/10 via-transparent to-transparent" />
+                
+                {/* Main Circle */}
+                <div className="absolute inset-8 rounded-full border border-white/5 bg-gradient-to-br from-white/[0.02] to-transparent backdrop-blur-sm">
+                  {/* Inner Ring */}
+                  <div className="absolute inset-8 rounded-full border border-amber-500/20">
+                    {/* Center Element */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center">
+                        <MicVocal className="h-16 w-16 text-amber-400/60 mx-auto mb-4" />
+                        <p className="text-white/40 text-sm font-light tracking-wide">Always Listening</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Decorative Elements */}
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-[#0c0c0c] border border-white/5 rounded-full">
+                    <span className="text-xs text-amber-400/60 tracking-wider">ACTIVE</span>
+                  </div>
+                </div>
+                
+                {/* Floating Stats */}
+                <div className="absolute top-8 right-0 bg-[#0c0c0c]/80 backdrop-blur-sm border border-white/5 rounded-2xl p-4">
+                  <p className="text-2xl font-light text-white">99.9%</p>
+                  <p className="text-xs text-white/40 tracking-wide">UPTIME</p>
+                </div>
+                <div className="absolute bottom-8 left-0 bg-[#0c0c0c]/80 backdrop-blur-sm border border-white/5 rounded-2xl p-4">
+                  <p className="text-2xl font-light text-white">&lt;400ms</p>
+                  <p className="text-xs text-white/40 tracking-wide">RESPONSE</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* How It Works */}
-      <section className="relative py-24 px-4 sm:px-6 lg:px-8 z-10">
-        <div className="max-w-7xl mx-auto">
+      {/* Process Section */}
+      <section className="relative py-32 px-4 sm:px-6 lg:px-8 z-10 bg-gradient-to-b from-transparent via-white/[0.01] to-transparent">
+        <div className="max-w-4xl mx-auto">
           <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-500/10 to-cyan-500/10 border border-violet-500/20 rounded-full px-4 py-2 mb-6 backdrop-blur-sm">
-              <Settings className="h-4 w-4 text-violet-400" />
-              <span className="text-sm text-violet-300">Simple Setup</span>
+            <div className="inline-flex items-center gap-3 mb-8">
+              <div className="h-px w-8 bg-gradient-to-r from-transparent to-amber-500/50" />
+              <span className="text-xs uppercase tracking-[0.3em] text-amber-400/80 font-light">The Journey</span>
+              <div className="h-px w-8 bg-gradient-to-l from-transparent to-amber-500/50" />
             </div>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-              <span className="text-white">Live in Minutes</span>
+            <h2 className="text-4xl sm:text-5xl font-extralight mb-6">
+              <span className="text-white/90">Effortless</span>{' '}
+              <span className="italic text-amber-200">Implementation</span>
             </h2>
-            <p className="text-xl text-gray-400">
-              Three simple steps to your AI voice assistant
-            </p>
           </div>
           
-          <div className="relative">
-            {/* Connection Line */}
-            <div className="hidden md:block absolute top-1/2 left-[16.666%] right-[16.666%] h-0.5 bg-gradient-to-r from-violet-500/50 via-fuchsia-500/50 to-cyan-500/50 -translate-y-1/2" />
-            
-            <div className="grid md:grid-cols-3 gap-8">
-              <StepCard
-                number="01"
-                title="Create Account"
-                description="Sign up in 30 seconds with email or Google. No credit card required."
-                gradient="from-violet-500 to-fuchsia-500"
-              />
-              <StepCard
-                number="02"
-                title="Configure"
-                description="Set up your business info, greeting, and call handling preferences."
-                gradient="from-fuchsia-500 to-pink-500"
-              />
-              <StepCard
-                number="03"
-                title="Go Live"
-                description="Connect your phone number and start receiving AI-powered calls instantly."
-                gradient="from-cyan-500 to-blue-500"
-              />
-            </div>
+          <div className="space-y-0">
+            <ProcessStep
+              number="01"
+              title="Consultation"
+              description="We begin with understanding your unique needs and brand voice"
+            />
+            <ProcessStep
+              number="02"
+              title="Customization"
+              description="Your AI is trained to embody your service standards perfectly"
+            />
+            <ProcessStep
+              number="03"
+              title="Integration"
+              description="Seamless connection with your existing phone systems"
+            />
+            <ProcessStep
+              number="04"
+              title="Excellence"
+              description="Continuous optimization ensures impeccable performance"
+              isLast
+            />
           </div>
         </div>
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="relative py-24 px-4 sm:px-6 lg:px-8 z-10">
-        <div className="max-w-7xl mx-auto">
+      <section id="pricing" className="relative py-32 px-4 sm:px-6 lg:px-8 z-10">
+        <div className="max-w-6xl mx-auto">
           <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-500/10 to-cyan-500/10 border border-violet-500/20 rounded-full px-4 py-2 mb-6 backdrop-blur-sm">
-              <Sparkles className="h-4 w-4 text-violet-400" />
-              <span className="text-sm text-violet-300">Transparent Pricing</span>
+            <div className="inline-flex items-center gap-3 mb-8">
+              <div className="h-px w-8 bg-gradient-to-r from-transparent to-amber-500/50" />
+              <span className="text-xs uppercase tracking-[0.3em] text-amber-400/80 font-light">Investment</span>
+              <div className="h-px w-8 bg-gradient-to-l from-transparent to-amber-500/50" />
             </div>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-              <span className="text-white">Simple, Fair Pricing</span>
+            <h2 className="text-4xl sm:text-5xl font-extralight mb-6">
+              <span className="text-white/90">Transparent</span>{' '}
+              <span className="italic text-amber-200">Value</span>
             </h2>
-            <p className="text-xl text-gray-400">
-              Pay only for what you use. No hidden fees.
+            <p className="text-white/50 font-light max-w-xl mx-auto">
+              Investment plans designed for establishments that demand excellence
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6">
             <PricingCard
-              name="Starter"
-              price="€49"
+              tier="Essential"
+              price="€99"
               period="/month"
-              description="Perfect for small businesses"
+              description="For boutique establishments"
               features={[
-                '100 minutes/month',
-                '1 phone number',
-                'Basic analytics',
+                '200 minutes/month',
+                '1 phone line',
+                'Standard analytics',
                 'Email support',
-                'Dutch voice',
+                '5 voice styles',
               ]}
             />
             <PricingCard
-              name="Professional"
-              price="€149"
+              tier="Prestige"
+              price="€249"
               period="/month"
-              description="For growing companies"
+              description="For growing properties"
               features={[
-                '500 minutes/month',
-                '3 phone numbers',
+                '1,000 minutes/month',
+                '5 phone lines',
                 'Advanced analytics',
                 'Priority support',
-                'Multi-language support',
-                'Calendar integration',
-                'Custom greeting',
+                '20 voice styles',
+                'Custom greetings',
+                'CRM integration',
               ]}
-              popular
+              featured
             />
             <PricingCard
-              name="Enterprise"
+              tier="Grand"
               price="Custom"
               period=""
-              description="For large organizations"
+              description="For luxury establishments"
               features={[
                 'Unlimited minutes',
-                'Unlimited numbers',
-                'Custom integrations',
-                'Dedicated support',
-                'SLA guarantee',
-                'On-premise option',
-                'White-label',
+                'Unlimited lines',
+                'White-label solution',
+                'Dedicated success manager',
+                'Custom voice cloning',
+                'Full API access',
+                'On-site training',
               ]}
             />
           </div>
@@ -288,140 +353,118 @@ export default function LandingPage() {
       </section>
 
       {/* Testimonials */}
-      <section id="testimonials" className="relative py-24 px-4 sm:px-6 lg:px-8 z-10">
-        <div className="max-w-7xl mx-auto">
+      <section id="testimonials" className="relative py-32 px-4 sm:px-6 lg:px-8 z-10">
+        <div className="max-w-6xl mx-auto">
           <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-500/10 to-cyan-500/10 border border-violet-500/20 rounded-full px-4 py-2 mb-6 backdrop-blur-sm">
-              <Users className="h-4 w-4 text-violet-400" />
-              <span className="text-sm text-violet-300">Customer Stories</span>
+            <div className="inline-flex items-center gap-3 mb-8">
+              <div className="h-px w-8 bg-gradient-to-r from-transparent to-amber-500/50" />
+              <span className="text-xs uppercase tracking-[0.3em] text-amber-400/80 font-light">Testimonials</span>
+              <div className="h-px w-8 bg-gradient-to-l from-transparent to-amber-500/50" />
             </div>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-              <span className="text-white">Loved by Teams</span>
+            <h2 className="text-4xl sm:text-5xl font-extralight mb-6">
+              <span className="text-white/90">Words from</span>{' '}
+              <span className="italic text-amber-200">Excellence</span>
             </h2>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
             <TestimonialCard
-              quote="Since implementing AI Receptionist, we haven't missed a single call. Customer satisfaction increased by 40%."
-              author="Jan de Vries"
-              role="Owner, De Vries Dental Practice"
-              avatar="JV"
+              quote="The level of sophistication in every interaction has elevated our guest experience beyond measure. It's like having a master concierge available around the clock."
+              author="Elisabeth van der Berg"
+              role="General Manager"
+              company="Grand Hotel Amsterdam"
+              rating={5}
             />
             <TestimonialCard
-              quote="The AI sounds incredibly natural. Most customers don't even realize they're talking to an AI system."
-              author="Lisa Bakker"
-              role="Manager, Bakker Real Estate"
-              avatar="LB"
-            />
-            <TestimonialCard
-              quote="Cost-effective and efficient. We save €2,000/month compared to a traditional receptionist."
-              author="Mark Jansen"
-              role="CEO, Tech Solutions BV"
-              avatar="MJ"
+              quote="Our guests frequently compliment our 'new staff member' without realizing it's AI. The natural conversation flow is simply remarkable."
+              author="Pierre Dubois"
+              role="Director of Operations"
+              company="Château Lumière"
+              rating={5}
             />
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="relative py-24 px-4 sm:px-6 lg:px-8 z-10">
-        <div className="max-w-4xl mx-auto">
-          <div className="relative bg-gradient-to-r from-violet-600/20 via-fuchsia-600/20 to-cyan-600/20 rounded-[2.5rem] p-12 sm:p-16 border border-white/10 overflow-hidden backdrop-blur-sm">
-            {/* Background Glow */}
-            <div className="absolute inset-0 bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-cyan-500/10 animate-pulse" />
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-gradient-to-b from-violet-500/20 to-transparent rounded-full blur-[100px]" />
-            
-            <div className="relative z-10 text-center">
-              <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-2 mb-8">
-                <Volume2 className="h-4 w-4 text-violet-400" />
-                <span className="text-sm text-gray-300">Start your free trial today</span>
-              </div>
-              
-              <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-                <span className="text-white">Ready to Transform</span>
-                <br />
-                <span className="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-cyan-400 bg-clip-text text-transparent">
-                  Your Communications?
-                </span>
-              </h2>
-              
-              <p className="text-xl text-gray-400 mb-10 max-w-xl mx-auto">
-                Join thousands of businesses already using AI voice technology. No credit card required.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Link
-                  href="/signup"
-                  className="group w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-white text-gray-900 hover:bg-gray-100 px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 shadow-2xl hover:scale-[1.02]"
-                >
-                  Get Started Free
-                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <Link
-                  href="/login"
-                  className="w-full sm:w-auto text-gray-400 hover:text-white transition-colors px-8 py-4 font-medium"
-                >
-                  Already have an account? Sign in
-                </Link>
-              </div>
-            </div>
+      {/* Final CTA */}
+      <section className="relative py-32 px-4 sm:px-6 lg:px-8 z-10">
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="inline-flex items-center gap-3 mb-12">
+            <div className="h-px w-12 bg-gradient-to-r from-transparent to-amber-500/50" />
+            <Award className="h-5 w-5 text-amber-400/60" />
+            <div className="h-px w-12 bg-gradient-to-l from-transparent to-amber-500/50" />
           </div>
+          
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extralight mb-8 leading-tight">
+            <span className="text-white/90">Elevate Your</span>
+            <br />
+            <span className="italic text-amber-200">Guest Experience</span>
+          </h2>
+          
+          <p className="text-lg text-white/50 font-light mb-12 max-w-xl mx-auto leading-relaxed">
+            Join the world's most discerning establishments in redefining 
+            what exceptional service truly means.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <Link
+              href="/signup"
+              className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black px-12 py-5 rounded-full font-medium transition-all duration-500 shadow-2xl shadow-amber-500/20"
+            >
+              Request a Consultation
+              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+          
+          <p className="mt-8 text-sm text-white/30 font-light">
+            Complimentary 14-day experience • No commitment required
+          </p>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="relative py-16 px-4 sm:px-6 lg:px-8 z-10 border-t border-white/5">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-12 mb-12">
-            {/* Brand */}
+      <footer className="relative py-20 px-4 sm:px-6 lg:px-8 z-10 border-t border-white/5">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-4 gap-12 mb-16">
             <div className="md:col-span-2">
               <div className="flex items-center gap-3 mb-6">
-                <div className="p-2.5 rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-500 shadow-lg shadow-violet-500/25">
-                  <Phone className="h-6 w-6 text-white" />
+                <div className="p-2 rounded-full bg-gradient-to-br from-amber-500/20 to-amber-600/20 border border-amber-500/20">
+                  <Phone className="h-4 w-4 text-amber-400" />
                 </div>
-                <span className="font-bold text-xl text-white">AI Receptionist</span>
+                <span className="text-lg font-light tracking-wide text-white/80">AI Receptionist</span>
               </div>
-              <p className="text-gray-400 max-w-sm mb-6">
-                The most advanced AI voice assistant for businesses. Natural conversations, 24/7 availability.
+              <p className="text-white/40 font-light text-sm leading-relaxed max-w-sm">
+                Redefining hospitality through the art of intelligent conversation. 
+                Every interaction, a masterpiece.
               </p>
-              <div className="flex gap-4">
-                {['Twitter', 'LinkedIn', 'GitHub'].map((social) => (
-                  <a key={social} href="#" className="text-gray-500 hover:text-white transition-colors text-sm">
-                    {social}
-                  </a>
-                ))}
-              </div>
             </div>
             
-            {/* Links */}
             <div>
-              <h4 className="font-semibold text-white mb-4">Product</h4>
-              <ul className="space-y-3 text-sm text-gray-400">
-                <li><a href="#features" className="hover:text-white transition-colors">Features</a></li>
-                <li><a href="#pricing" className="hover:text-white transition-colors">Pricing</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Integrations</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">API</a></li>
+              <h4 className="text-xs uppercase tracking-widest text-white/60 mb-6">Experience</h4>
+              <ul className="space-y-4 text-sm text-white/40 font-light">
+                <li><a href="#voice-demos" className="hover:text-amber-400/80 transition-colors">Voice Demos</a></li>
+                <li><a href="#features" className="hover:text-amber-400/80 transition-colors">Capabilities</a></li>
+                <li><a href="#pricing" className="hover:text-amber-400/80 transition-colors">Investment</a></li>
               </ul>
             </div>
             
             <div>
-              <h4 className="font-semibold text-white mb-4">Company</h4>
-              <ul className="space-y-3 text-sm text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">About</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Privacy</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Terms</a></li>
+              <h4 className="text-xs uppercase tracking-widest text-white/60 mb-6">Company</h4>
+              <ul className="space-y-4 text-sm text-white/40 font-light">
+                <li><a href="#" className="hover:text-amber-400/80 transition-colors">About</a></li>
+                <li><a href="#" className="hover:text-amber-400/80 transition-colors">Privacy</a></li>
+                <li><a href="#" className="hover:text-amber-400/80 transition-colors">Terms</a></li>
               </ul>
             </div>
           </div>
           
           <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-gray-500">
-              © 2024 AI Receptionist. All rights reserved.
+            <p className="text-xs text-white/30 font-light tracking-wide">
+              © 2024 AI Receptionist. Crafted with precision.
             </p>
-            <div className="flex items-center gap-6 text-sm text-gray-500">
-              <span>Made with ❤️ in Amsterdam</span>
-            </div>
+            <p className="text-xs text-white/30 font-light tracking-wide">
+              Amsterdam • London • New York
+            </p>
           </div>
         </div>
       </footer>
@@ -429,164 +472,214 @@ export default function LandingPage() {
   )
 }
 
-// Voice Visualization Component
-function VoiceVisualization() {
-  return (
-    <div className="relative w-full aspect-square max-w-lg mx-auto">
-      {/* Outer Glow Ring */}
-      <div className="absolute inset-0 rounded-full bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-cyan-500/20 blur-3xl animate-pulse" />
-      
-      {/* Main Circle */}
-      <div className="absolute inset-8 rounded-full bg-gradient-to-br from-violet-600/30 to-fuchsia-600/30 backdrop-blur-xl border border-white/10">
-        {/* Inner Content */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          {/* Voice Waves */}
-          <div className="relative w-full h-32 flex items-center justify-center gap-1">
-            {[...Array(20)].map((_, i) => (
-              <div
-                key={i}
-                className="w-1 bg-gradient-to-t from-violet-500 to-cyan-400 rounded-full"
-                style={{
-                  height: `${20 + Math.random() * 60}%`,
-                  animation: `wave 1s ease-in-out infinite`,
-                  animationDelay: `${i * 0.05}s`,
-                }}
-              />
-            ))}
-          </div>
-        </div>
-        
-        {/* Rotating Ring */}
-        <div className="absolute inset-4 rounded-full border-2 border-dashed border-violet-500/30 animate-spin" style={{ animationDuration: '20s' }} />
-        
-        {/* Status Indicator */}
-        <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-gray-900/80 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">
-          <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-          <span className="text-sm text-gray-300">Listening...</span>
-        </div>
-      </div>
-      
-      {/* Floating Elements */}
-      <div className="absolute top-4 right-4 p-3 bg-gray-900/60 backdrop-blur-sm rounded-xl border border-white/10">
-        <MessageSquare className="h-5 w-5 text-violet-400" />
-      </div>
-      <div className="absolute bottom-12 left-4 p-3 bg-gray-900/60 backdrop-blur-sm rounded-xl border border-white/10">
-        <Headphones className="h-5 w-5 text-cyan-400" />
-      </div>
-      <div className="absolute top-1/4 left-0 p-3 bg-gray-900/60 backdrop-blur-sm rounded-xl border border-white/10">
-        <Bot className="h-5 w-5 text-fuchsia-400" />
-      </div>
-    </div>
-  )
-}
-
-// Stat Card Component
-function StatCard({ value, label, icon: Icon, color }: { value: string; label: string; icon: any; color: string }) {
-  const colorClasses: Record<string, string> = {
-    violet: 'from-violet-500 to-fuchsia-500 text-violet-400',
-    emerald: 'from-emerald-500 to-teal-500 text-emerald-400',
-    cyan: 'from-cyan-500 to-blue-500 text-cyan-400',
-    fuchsia: 'from-fuchsia-500 to-pink-500 text-fuchsia-400',
+// Voice Demo Card Component
+function VoiceDemoCard({
+  title,
+  subtitle,
+  description,
+  voiceType,
+  accent,
+  audioSrc,
+  gradient,
+}: {
+  title: string
+  subtitle: string
+  description: string
+  voiceType: string
+  accent: string
+  audioSrc: string
+  gradient: string
+}) {
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [progress, setProgress] = useState(0)
+  const audioRef = useRef<HTMLAudioElement>(null)
+  
+  const togglePlay = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause()
+      } else {
+        audioRef.current.play().catch(() => {
+          // Demo: simulate playback if no audio file
+          simulatePlayback()
+        })
+      }
+      setIsPlaying(!isPlaying)
+    } else {
+      setIsPlaying(!isPlaying)
+      simulatePlayback()
+    }
+  }
+  
+  const simulatePlayback = () => {
+    setProgress(0)
+    const interval = setInterval(() => {
+      setProgress(prev => {
+        if (prev >= 100) {
+          clearInterval(interval)
+          setIsPlaying(false)
+          return 0
+        }
+        return prev + 2
+      })
+    }, 100)
   }
   
   return (
-    <div className="relative group">
-      <div className="absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl blur-xl" />
-      <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-white/20 transition-all duration-300">
-        <div className={`p-2.5 bg-gradient-to-br ${colorClasses[color].split(' ').slice(0, 2).join(' ')}/10 rounded-xl w-fit mb-4`}>
-          <Icon className={`h-5 w-5 ${colorClasses[color].split(' ').pop()}`} />
+    <div className={`group relative bg-gradient-to-br ${gradient} backdrop-blur-sm border border-white/5 rounded-2xl p-6 hover:border-white/10 transition-all duration-500`}>
+      <audio ref={audioRef} src={audioSrc} />
+      
+      {/* Header */}
+      <div className="flex items-start justify-between mb-6">
+        <div>
+          <h3 className="text-lg font-light text-white/90 mb-1">{title}</h3>
+          <p className="text-sm text-white/40 font-light">{subtitle}</p>
         </div>
-        <div className="text-3xl font-bold text-white mb-1">{value}</div>
-        <div className="text-sm text-gray-400">{label}</div>
+        <button
+          onClick={togglePlay}
+          className={`p-3 rounded-full transition-all duration-300 ${
+            isPlaying 
+              ? 'bg-amber-500 text-black' 
+              : 'bg-white/5 text-white/60 hover:bg-white/10 hover:text-white'
+          }`}
+        >
+          {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4 fill-current" />}
+        </button>
+      </div>
+      
+      {/* Waveform */}
+      <div className="h-12 flex items-center gap-[2px] mb-6">
+        {[...Array(40)].map((_, i) => (
+          <div
+            key={i}
+            className={`flex-1 rounded-full transition-all duration-300 ${
+              isPlaying && progress > (i / 40) * 100
+                ? 'bg-amber-400'
+                : 'bg-white/10'
+            }`}
+            style={{
+              height: `${20 + Math.sin(i * 0.5) * 15 + Math.random() * 10}%`,
+            }}
+          />
+        ))}
+      </div>
+      
+      {/* Description */}
+      <p className="text-sm text-white/40 font-light mb-4 leading-relaxed">{description}</p>
+      
+      {/* Meta */}
+      <div className="flex items-center gap-4 text-xs text-white/30">
+        <span className="flex items-center gap-1">
+          <MicVocal className="h-3 w-3" />
+          {voiceType}
+        </span>
+        <span>{accent}</span>
       </div>
     </div>
   )
 }
 
-// Feature Card Component
-function FeatureCard({ icon: Icon, title, description, gradient }: { icon: any; title: string; description: string; gradient: string }) {
+// Feature Item Component
+function FeatureItem({ icon: Icon, title, description }: { icon: any; title: string; description: string }) {
   return (
-    <div className="group relative">
-      <div className={`absolute inset-0 bg-gradient-to-r ${gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-2xl blur-xl`} />
-      <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-white/20 transition-all duration-300 h-full">
-        <div className={`p-3 bg-gradient-to-br ${gradient} rounded-xl w-fit mb-6 shadow-lg`}>
-          <Icon className="h-6 w-6 text-white" />
-        </div>
-        <h3 className="text-xl font-semibold text-white mb-3">{title}</h3>
-        <p className="text-gray-400">{description}</p>
+    <div className="flex items-start gap-4 group">
+      <div className="p-2 rounded-lg bg-gradient-to-br from-amber-500/10 to-amber-600/10 border border-amber-500/10 group-hover:border-amber-500/20 transition-colors">
+        <Icon className="h-4 w-4 text-amber-400/60" />
+      </div>
+      <div>
+        <h4 className="text-base font-light text-white/80 mb-1">{title}</h4>
+        <p className="text-sm text-white/40 font-light">{description}</p>
       </div>
     </div>
   )
 }
 
-// Step Card Component
-function StepCard({ number, title, description, gradient }: { number: string; title: string; description: string; gradient: string }) {
+// Process Step Component
+function ProcessStep({ number, title, description, isLast = false }: { number: string; title: string; description: string; isLast?: boolean }) {
   return (
-    <div className="relative text-center group">
-      <div className={`w-16 h-16 bg-gradient-to-br ${gradient} rounded-2xl flex items-center justify-center text-2xl font-bold text-white mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-        {number}
+    <div className="relative flex gap-8 pb-12">
+      {/* Line */}
+      {!isLast && (
+        <div className="absolute left-[19px] top-10 w-px h-full bg-gradient-to-b from-amber-500/30 to-transparent" />
+      )}
+      
+      {/* Number */}
+      <div className="relative z-10 w-10 h-10 rounded-full bg-[#0c0c0c] border border-amber-500/30 flex items-center justify-center">
+        <span className="text-xs text-amber-400/80 font-light">{number}</span>
       </div>
-      <h3 className="text-xl font-semibold text-white mb-3">{title}</h3>
-      <p className="text-gray-400">{description}</p>
+      
+      {/* Content */}
+      <div className="flex-1 pt-2">
+        <h3 className="text-xl font-light text-white/80 mb-2">{title}</h3>
+        <p className="text-white/40 font-light">{description}</p>
+      </div>
     </div>
   )
 }
 
 // Pricing Card Component
 function PricingCard({
-  name,
+  tier,
   price,
   period,
   description,
   features,
-  popular = false,
+  featured = false,
 }: {
-  name: string
+  tier: string
   price: string
   period: string
   description: string
   features: string[]
-  popular?: boolean
+  featured?: boolean
 }) {
   return (
-    <div className={`relative group ${popular ? 'md:-mt-4 md:mb-4' : ''}`}>
-      {popular && (
-        <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white text-xs font-semibold px-4 py-1.5 rounded-full shadow-lg">
-          Most Popular
+    <div className={`relative group ${featured ? 'md:-mt-4 md:mb-4' : ''}`}>
+      {featured && (
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
+          <span className="text-xs uppercase tracking-widest text-amber-400 bg-[#0c0c0c] px-4 py-1 border border-amber-500/30 rounded-full">
+            Recommended
+          </span>
         </div>
       )}
-      <div className={`relative bg-white/5 backdrop-blur-sm border rounded-2xl p-8 transition-all duration-300 h-full ${
-        popular 
-          ? 'border-violet-500/50 shadow-xl shadow-violet-500/10' 
-          : 'border-white/10 hover:border-white/20'
+      
+      <div className={`relative h-full bg-gradient-to-br from-white/[0.02] to-transparent backdrop-blur-sm border rounded-2xl p-8 transition-all duration-500 ${
+        featured 
+          ? 'border-amber-500/30 shadow-xl shadow-amber-500/5' 
+          : 'border-white/5 hover:border-white/10'
       }`}>
+        {/* Tier */}
         <div className="mb-6">
-          <h3 className="text-xl font-semibold text-white">{name}</h3>
-          <p className="text-sm text-gray-400 mt-1">{description}</p>
+          <h3 className="text-lg font-light text-white/80 mb-1">{tier}</h3>
+          <p className="text-sm text-white/40 font-light">{description}</p>
         </div>
+        
+        {/* Price */}
         <div className="mb-8">
-          <span className="text-5xl font-bold text-white">{price}</span>
-          <span className="text-gray-400">{period}</span>
+          <span className="text-4xl font-extralight text-white">{price}</span>
+          <span className="text-white/40 font-light">{period}</span>
         </div>
+        
+        {/* Features */}
         <ul className="space-y-4 mb-8">
           {features.map((feature, i) => (
-            <li key={i} className="flex items-center gap-3 text-gray-300">
-              <div className={`p-1 rounded-full ${popular ? 'bg-violet-500/20' : 'bg-white/10'}`}>
-                <Check className={`h-3.5 w-3.5 ${popular ? 'text-violet-400' : 'text-emerald-400'}`} />
-              </div>
+            <li key={i} className="flex items-center gap-3 text-sm text-white/60 font-light">
+              <Check className={`h-4 w-4 flex-shrink-0 ${featured ? 'text-amber-400' : 'text-white/30'}`} />
               {feature}
             </li>
           ))}
         </ul>
+        
+        {/* CTA */}
         <Link
           href="/signup"
-          className={`block w-full text-center py-4 rounded-xl font-semibold transition-all duration-300 ${
-            popular
-              ? 'bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white shadow-lg shadow-violet-500/25'
-              : 'bg-white/10 hover:bg-white/20 text-white border border-white/10'
+          className={`block w-full text-center py-4 rounded-full font-light text-sm transition-all duration-300 ${
+            featured
+              ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-black hover:from-amber-400 hover:to-amber-500'
+              : 'bg-white/5 text-white/60 hover:bg-white/10 hover:text-white border border-white/5'
           }`}
         >
-          {price === 'Custom' ? 'Contact Sales' : 'Get Started'}
+          {price === 'Custom' ? 'Contact Us' : 'Get Started'}
         </Link>
       </div>
     </div>
@@ -594,25 +687,31 @@ function PricingCard({
 }
 
 // Testimonial Card Component
-function TestimonialCard({ quote, author, role, avatar }: { quote: string; author: string; role: string; avatar: string }) {
+function TestimonialCard({ quote, author, role, company, rating }: { quote: string; author: string; role: string; company: string; rating: number }) {
   return (
-    <div className="relative group">
-      <div className="absolute inset-0 bg-gradient-to-r from-violet-500/10 to-fuchsia-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl blur-xl" />
-      <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-white/20 transition-all duration-300 h-full">
-        <div className="flex gap-1 mb-6">
-          {[...Array(5)].map((_, i) => (
-            <Star key={i} className="h-5 w-5 text-amber-400 fill-amber-400" />
-          ))}
+    <div className="relative bg-gradient-to-br from-white/[0.02] to-transparent backdrop-blur-sm border border-white/5 rounded-2xl p-8 hover:border-white/10 transition-all duration-500">
+      {/* Rating */}
+      <div className="flex gap-1 mb-6">
+        {[...Array(rating)].map((_, i) => (
+          <Star key={i} className="h-4 w-4 text-amber-400 fill-amber-400" />
+        ))}
+      </div>
+      
+      {/* Quote */}
+      <blockquote className="text-lg font-light text-white/70 leading-relaxed mb-8 italic">
+        "{quote}"
+      </blockquote>
+      
+      {/* Author */}
+      <div className="flex items-center gap-4">
+        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-amber-500/20 to-amber-600/20 border border-amber-500/20 flex items-center justify-center">
+          <span className="text-sm font-light text-amber-400">
+            {author.split(' ').map(n => n[0]).join('')}
+          </span>
         </div>
-        <p className="text-gray-300 mb-8 leading-relaxed">"{quote}"</p>
-        <div className="flex items-center gap-4">
-          <div className="w-12 h-12 bg-gradient-to-br from-violet-500 to-fuchsia-500 rounded-full flex items-center justify-center font-semibold text-white">
-            {avatar}
-          </div>
-          <div>
-            <p className="font-semibold text-white">{author}</p>
-            <p className="text-gray-500 text-sm">{role}</p>
-          </div>
+        <div>
+          <p className="text-sm font-light text-white/80">{author}</p>
+          <p className="text-xs text-white/40 font-light">{role}, {company}</p>
         </div>
       </div>
     </div>
