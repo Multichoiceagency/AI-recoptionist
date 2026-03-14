@@ -37,7 +37,6 @@ export default async function CostsPage() {
           </div>
         )}
 
-        {/* Info box */}
         <div className="bg-blue-500/5 border border-blue-500/20 rounded-xl p-4 flex gap-3">
           <Info className="h-4 w-4 text-blue-400 flex-shrink-0 mt-0.5" />
           <p className="text-xs text-blue-400/80">

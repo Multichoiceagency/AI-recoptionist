@@ -21,7 +21,6 @@ async function getData() {
 export default async function SettingsPage() {
   const { status, agents } = await getData()
 
-  // Build masked env vars for display
   const envVarsToShow = [
     { key: 'GITHUB_TOKEN', value: process.env.GITHUB_TOKEN },
     { key: 'GITHUB_REPO', value: process.env.GITHUB_REPO },
@@ -31,6 +30,8 @@ export default async function SettingsPage() {
     { key: 'OPENAI_API_KEY', value: process.env.OPENAI_API_KEY },
     { key: 'LIVEKIT_URL', value: process.env.LIVEKIT_URL },
     { key: 'LIVEKIT_API_KEY', value: process.env.LIVEKIT_API_KEY },
+    { key: 'NEXT_PUBLIC_SUPABASE_URL', value: process.env.NEXT_PUBLIC_SUPABASE_URL },
+    { key: 'NEXT_PUBLIC_SUPABASE_ANON_KEY', value: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY },
   ].map(({ key, value }) => ({
     key,
     configured: !!value,

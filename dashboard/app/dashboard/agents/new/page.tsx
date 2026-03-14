@@ -81,7 +81,6 @@ export default function NewAgentPage() {
     { question: 'Wat zijn uw openingstijden?', answer: '' },
   ])
 
-  // Hours state
   const [hours, setHours] = useState({
     monday: { open: '09:00', close: '17:00' },
     tuesday: { open: '09:00', close: '17:00' },
@@ -179,7 +178,7 @@ export default function NewAgentPage() {
 
       const data = await res.json()
       if (res.ok) {
-        router.push(`/agents/${configName}`)
+        router.push(`/dashboard/agents/${configName}`)
         router.refresh()
       } else {
         setError(data.error || 'Opslaan mislukt')
@@ -197,7 +196,7 @@ export default function NewAgentPage() {
         title="Nieuw Agent"
         description="Maak een nieuwe AI receptionist configuratie aan"
         actions={
-          <Link href="/agents">
+          <Link href="/dashboard/agents">
             <Button variant="ghost" size="sm">
               <ArrowLeft className="h-4 w-4" />
               Terug
@@ -469,7 +468,7 @@ export default function NewAgentPage() {
 
         {/* Submit */}
         <div className="flex justify-end gap-3 pt-2">
-          <Link href="/agents">
+          <Link href="/dashboard/agents">
             <Button type="button" variant="outline">
               Annuleren
             </Button>

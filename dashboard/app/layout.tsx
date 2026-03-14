@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import { Sidebar } from '@/components/sidebar'
+import { ThemeProvider } from '@/components/theme-provider'
+import { GoogleTranslate } from '@/components/google-translate'
 
 export const metadata: Metadata = {
-  title: 'AI Receptionist Dashboard',
-  description: 'Beheer uw AI receptionist agents en bekijk kosten en statistieken.',
+  title: 'AI Receptionist | Automatiseer Uw Klantenservice met AI',
+  description: 'Professionele AI-gestuurde telefoonbeantwoording voor uw bedrijf. 24/7 beschikbaar, meertalig, en naadloos geïntegreerd.',
   icons: { icon: '/favicon.svg' },
 }
 
@@ -14,12 +15,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="nl" className="dark">
-      <body className="bg-gray-950 text-white min-h-screen flex">
-        <Sidebar />
-        <main className="flex-1 ml-60 min-h-screen overflow-y-auto bg-gray-950">
+    <html lang="nl" className="dark" suppressHydrationWarning>
+      <body className="min-h-screen transition-colors">
+        <ThemeProvider>
           {children}
-        </main>
+          <GoogleTranslate />
+        </ThemeProvider>
       </body>
     </html>
   )
