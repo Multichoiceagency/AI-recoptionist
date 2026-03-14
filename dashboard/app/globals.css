@@ -4,8 +4,33 @@
 
 @layer base {
   :root {
-    --background: #030712;
+    /* Voisly Premium Color Palette */
+    --color-primary: #8B5CF6;
+    --color-primary-light: #A78BFA;
+    --color-primary-dark: #7C3AED;
+    
+    --color-secondary: #D946EF;
+    --color-secondary-light: #E879F9;
+    --color-secondary-dark: #C026D3;
+    
+    --color-accent: #06B6D4;
+    --color-accent-light: #22D3EE;
+    --color-accent-dark: #0891B2;
+    
+    --color-success: #10B981;
+    --color-warning: #F59E0B;
+    --color-error: #EF4444;
+    
+    --background-primary: #0A0118;
+    --background-secondary: #120428;
+    --background-card: rgba(255, 255, 255, 0.05);
+    
     --foreground: #ffffff;
+    --foreground-muted: #9CA3AF;
+    --foreground-subtle: #6B7280;
+    
+    --border-color: rgba(255, 255, 255, 0.1);
+    --border-hover: rgba(255, 255, 255, 0.2);
   }
 
   * {
@@ -19,8 +44,8 @@
 
   /* Dark mode (default) */
   html.dark body {
-    background-color: #030712;
-    color: #ffffff;
+    background-color: var(--background-primary);
+    color: var(--foreground);
   }
 
   html.dark {
@@ -38,8 +63,62 @@
   }
 
   body {
-    font-family: Inter, system-ui, sans-serif;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    font-family: var(--font-inter), system-ui, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Voice Wave Animation */
+  @keyframes wave {
+    0%, 100% {
+      transform: scaleY(0.3);
+    }
+    50% {
+      transform: scaleY(1);
+    }
+  }
+  
+  /* Pulse Glow Animation */
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scale(1.05);
+    }
+  }
+  
+  /* Float Animation */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  /* Gradient Shift Animation */
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
   }
 
   /* Dark scrollbar */
