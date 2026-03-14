@@ -34,7 +34,7 @@ export default async function AgentsPage() {
         title="Agents"
         description={`${agents.length} agent configuraties beheren`}
         actions={
-          <Link href="/agents/new">
+          <Link href="/dashboard/agents/new">
             <Button>
               <Plus className="h-4 w-4" />
               Nieuw Agent
@@ -53,7 +53,7 @@ export default async function AgentsPage() {
             </span>
           </div>
         ) : (
-          <AgentsTable agents={agents} currentDefault={currentDefault ?? undefined} />
+          <AgentsTable agents={agents} currentDefault={currentDefault ?? undefined} basePath="/dashboard" />
         )}
       </div>
     </div>

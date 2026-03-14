@@ -19,11 +19,10 @@ async function getAgent(name: string) {
 export default async function AgentDetailPage({
   params,
 }: {
-  params: { name: string }
+  params: Promise<{ name: string }>
 }) {
-  const { name } = params
+  const { name } = await params
 
-  // Validate name format
   if (!/^[a-zA-Z0-9-]+$/.test(name)) {
     notFound()
   }
@@ -45,5 +44,5 @@ export default async function AgentDetailPage({
     notFound()
   }
 
-  return <AgentEditor name={name} initialData={agentData} />
+  return <AgentEditor name={name} initialData={agentData} basePath="/dashboard" />
 }

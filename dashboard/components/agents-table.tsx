@@ -20,11 +20,12 @@ export interface AgentRow {
 interface AgentsTableProps {
   agents: AgentRow[]
   currentDefault?: string
+  basePath?: string
 }
 
 const PAGE_SIZE = 15
 
-export function AgentsTable({ agents, currentDefault }: AgentsTableProps) {
+export function AgentsTable({ agents, currentDefault, basePath = '' }: AgentsTableProps) {
   const router = useRouter()
   const [search, setSearch] = useState('')
   const [page, setPage] = useState(1)
@@ -138,7 +139,7 @@ export function AgentsTable({ agents, currentDefault }: AgentsTableProps) {
                     <div className="flex items-center gap-2">
                       <div>
                         <Link
-                          href={`/agents/${agent.name}`}
+                          href={`${basePath}/agents/${agent.name}`}
                           className="font-medium text-white hover:text-blue-400 transition-colors"
                         >
                           {agent.businessName || agent.name}
@@ -161,12 +162,12 @@ export function AgentsTable({ agents, currentDefault }: AgentsTableProps) {
                   </td>
                   <td className="px-4 py-3">
                     <div className="flex items-center justify-end gap-1">
-                      <Link href={`/agents/${agent.name}`}>
+                      <Link href={`${basePath}/agents/${agent.name}`}>
                         <Button variant="ghost" size="icon" title="Bekijk">
                           <ExternalLink className="h-3.5 w-3.5" />
                         </Button>
                       </Link>
-                      <Link href={`/agents/${agent.name}`}>
+                      <Link href={`${basePath}/agents/${agent.name}`}>
                         <Button variant="ghost" size="icon" title="Bewerk">
                           <Pencil className="h-3.5 w-3.5" />
                         </Button>

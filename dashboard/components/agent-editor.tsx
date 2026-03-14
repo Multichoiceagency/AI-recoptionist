@@ -42,6 +42,7 @@ interface AgentEditorProps {
     sha: string
     parsed: Record<string, unknown>
   }
+  basePath?: string
 }
 
 const VOICE_OPTIONS = [
@@ -56,7 +57,7 @@ const VOICE_OPTIONS = [
 
 type TabType = 'form' | 'yaml'
 
-export function AgentEditor({ name, initialData }: AgentEditorProps) {
+export function AgentEditor({ name, initialData, basePath = '' }: AgentEditorProps) {
   const router = useRouter()
   const parsed = initialData.parsed as Record<string, unknown>
 
@@ -202,7 +203,7 @@ export function AgentEditor({ name, initialData }: AgentEditorProps) {
     try {
       const res = await fetch(`/api/agents/${name}`, { method: 'DELETE' })
       if (res.ok) {
-        router.push('/agents')
+        router.push(`${basePath}/agents`)
         router.refresh()
       } else {
         const data = await res.json()
@@ -242,7 +243,7 @@ export function AgentEditor({ name, initialData }: AgentEditorProps) {
         description={`Agent configuratie — ${name}.yaml`}
         actions={
           <div className="flex items-center gap-2">
-            <Link href="/agents">
+            <Link href={`${basePath}/agents`}>
               <Button variant="ghost" size="sm">
                 <ArrowLeft className="h-4 w-4" />
                 Terug

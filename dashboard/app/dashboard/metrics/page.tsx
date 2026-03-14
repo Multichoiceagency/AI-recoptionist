@@ -32,7 +32,6 @@ export default async function MetricsPage() {
   const chartData = usage?.dailyData || generateEstimatedData()
   const notConfigured = !usage || usage.error || !usage.available
 
-  // Estimated calls based on cost (avg 3 min call)
   const avgCallCostEur =
     3 * 0.4 * REALTIME_PRICING.audioInputPerMin * REALTIME_PRICING.usdToEur +
     3 * 0.6 * REALTIME_PRICING.audioOutputPerMin * REALTIME_PRICING.usdToEur
@@ -60,7 +59,6 @@ export default async function MetricsPage() {
           </div>
         )}
 
-        {/* Stats */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <StatsCard
             title="Geschatte gesprekken vandaag"
@@ -82,7 +80,6 @@ export default async function MetricsPage() {
           />
         </div>
 
-        {/* Pricing info */}
         <div className="bg-gray-900 border border-gray-800 rounded-xl p-5">
           <h3 className="font-semibold text-white mb-3">OpenAI Realtime API tarieven</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -109,7 +106,6 @@ export default async function MetricsPage() {
           </div>
         </div>
 
-        {/* Chart */}
         <div className="bg-gray-900 border border-gray-800 rounded-xl p-6">
           <div className="flex items-center justify-between mb-5">
             <div>
@@ -122,22 +118,13 @@ export default async function MetricsPage() {
           <MetricsChart data={chartData} />
         </div>
 
-        {/* Calculator */}
         <PricingCalculator />
       </div>
     </div>
   )
 }
 
-function PricingRow({
-  label,
-  value,
-  sub,
-}: {
-  label: string
-  value: string
-  sub: string
-}) {
+function PricingRow({ label, value, sub }: { label: string; value: string; sub: string }) {
   return (
     <div className="bg-gray-800 rounded-lg p-4">
       <p className="text-xs text-gray-400 mb-1">{label}</p>
